@@ -4,18 +4,18 @@ public class Artwork {
     private int year;
     private Artist artist;
 
-    // Constructor with title, year, and artist
+   
     public Artwork(String title, int year, Artist artist) {
         this.title = title;
         this.year = year;
         this.artist = artist;
     }
 
-    // Shallow copy constructor
+   
     public Artwork(Artwork other) {
         this.title = other.title;
         this.year = other.year;
-        this.artist = other.artist;  // Shallow copy (copies the reference to the same artist object)
+        this.artist = other.artist;  
     }
 
     // Deep copy constructor
@@ -23,28 +23,27 @@ public class Artwork {
         this.title = other.title;
         this.year = other.year;
         if (isDeepCopy) {
-            this.artist = new Artist(other.artist.getName()); // Deep copy (creates a new artist object)
+            this.artist = new Artist(other.artist.getName()); 
         } else {
-            this.artist = other.artist; // Shallow copy
+            this.artist = other.artist; 
         }
     }
 
-    // Constructor with title and year only, default artist "unknown"
+   
     public Artwork(String title, int year) {
         this.title = title;
         this.year = year;
         this.artist = new Artist("unknown");
     }
 
-    // Shallow copy method
+   
     public Artwork shallowCopy() {
         return new Artwork(this); // Uses the shallow copy constructor
     }
 
-    // Deep copy method
+    
     public Artwork deepCopy() {
-        return new Artwork(this, true); // Uses the deep copy constructor
-    }
+        return new Artwork(this, true); 
 
     // Getters
     public String getTitle() {
@@ -59,7 +58,7 @@ public class Artwork {
         return artist;
     }
 
-    // toString method
+   
     @Override
     public String toString() {
         return "Artwork{" +
@@ -69,19 +68,19 @@ public class Artwork {
                 '}';
     }
 
-    // equals method
+    
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true; // Check for reference equality
-        if (obj == null || getClass() != obj.getClass()) return false; // Type check
+        if (this == obj) return true; 
+        if (obj == null || getClass() != obj.getClass()) return false; 
 
         Artwork artwork = (Artwork) obj; // Cast obj to Artwork
         return year == artwork.year && 
                title.equals(artwork.title) && 
-               artist.equals(artwork.artist); // Assuming Artist class also has an equals method
+               artist.equals(artwork.artist); 
     }
 
-    // Display method
+   
     public void display() {
         artist.display();
         System.out.println("Title: " + title);
